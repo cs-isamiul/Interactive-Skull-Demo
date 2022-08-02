@@ -37,7 +37,7 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""InitiateMouse"",
+                    ""name"": ""RightClick"",
                     ""type"": ""Button"",
                     ""id"": ""b0467535-7e50-4ccc-a7ed-7c0197cac9ed"",
                     ""expectedControlType"": ""Button"",
@@ -53,6 +53,15 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""2fc3beb4-ac7c-4248-8c32-12dc2d8a6c2b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -184,7 +193,7 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""InitiateMouse"",
+                    ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -198,6 +207,17 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0407eacd-a81b-4770-b146-5a1a81b5b15f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,8 +227,9 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_CameraMovement = m_Camera.FindAction("CameraMovement", throwIfNotFound: true);
-        m_Camera_InitiateMouse = m_Camera.FindAction("InitiateMouse", throwIfNotFound: true);
+        m_Camera_RightClick = m_Camera.FindAction("RightClick", throwIfNotFound: true);
         m_Camera_MousePosition = m_Camera.FindAction("MousePosition", throwIfNotFound: true);
+        m_Camera_LeftClick = m_Camera.FindAction("LeftClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -269,15 +290,17 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Camera;
     private ICameraActions m_CameraActionsCallbackInterface;
     private readonly InputAction m_Camera_CameraMovement;
-    private readonly InputAction m_Camera_InitiateMouse;
+    private readonly InputAction m_Camera_RightClick;
     private readonly InputAction m_Camera_MousePosition;
+    private readonly InputAction m_Camera_LeftClick;
     public struct CameraActions
     {
         private @UserControls m_Wrapper;
         public CameraActions(@UserControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @CameraMovement => m_Wrapper.m_Camera_CameraMovement;
-        public InputAction @InitiateMouse => m_Wrapper.m_Camera_InitiateMouse;
+        public InputAction @RightClick => m_Wrapper.m_Camera_RightClick;
         public InputAction @MousePosition => m_Wrapper.m_Camera_MousePosition;
+        public InputAction @LeftClick => m_Wrapper.m_Camera_LeftClick;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,12 +313,15 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                 @CameraMovement.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMovement;
                 @CameraMovement.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnCameraMovement;
-                @InitiateMouse.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnInitiateMouse;
-                @InitiateMouse.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnInitiateMouse;
-                @InitiateMouse.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnInitiateMouse;
+                @RightClick.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnRightClick;
                 @MousePosition.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnMousePosition;
+                @LeftClick.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
             }
             m_Wrapper.m_CameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -303,12 +329,15 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                 @CameraMovement.started += instance.OnCameraMovement;
                 @CameraMovement.performed += instance.OnCameraMovement;
                 @CameraMovement.canceled += instance.OnCameraMovement;
-                @InitiateMouse.started += instance.OnInitiateMouse;
-                @InitiateMouse.performed += instance.OnInitiateMouse;
-                @InitiateMouse.canceled += instance.OnInitiateMouse;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
             }
         }
     }
@@ -316,7 +345,8 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
     public interface ICameraActions
     {
         void OnCameraMovement(InputAction.CallbackContext context);
-        void OnInitiateMouse(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
     }
 }

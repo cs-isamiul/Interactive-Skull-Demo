@@ -818,9 +818,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9c080c4e1ef0a4c8b5f003d0b402ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraEvent:
+  cameraPanEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1435164943}
+        m_TargetAssemblyTypeName: RotateAroundPoint, Assembly-CSharp
+        m_MethodName: OnRotateInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   mouseMovementEvent:
     m_PersistentCalls:
       m_Calls:
@@ -851,7 +863,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  debug: 0
+  debugPan: 0
+  debugMousePosition: 0
+  debugRightClick: 0
 --- !u!1 &1227706694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 65702495048144492, guid: 51f6f402fadee1249a4218a43cd448e6, type: 3}
@@ -935,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acec993f877b4c646a4eaed4dde9c5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
+  rotationSpeed: 2
   pivotObject: {fileID: 1292860767}
 --- !u!1 &1467921902
 GameObject:

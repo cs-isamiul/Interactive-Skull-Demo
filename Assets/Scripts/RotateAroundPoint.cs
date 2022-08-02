@@ -23,16 +23,20 @@ public class RotateAroundPoint : MonoBehaviour
     void Update()
     {
         //for testing
-        if(rotateCamera)
-        {
-            transform.RotateAround(pivotObject.transform.position, new Vector3(0,rotationSpeed,0), rotationSpeed);
-        }
+        //if(rotateCamera)
+        //{
+        //    transform.RotateAround(pivotObject.transform.position, new Vector2(0,rotationSpeed), rotationSpeed);
+        //}
     }
 
-    public void OnRotateInput(Vector3 direction)
+    public void OnRotateInput(float xPan, float yPan)
     {
         //rotate around pivotobject at a certain direction at a certain speed
-        transform.RotateAround(pivotObject.transform.position, direction, rotationSpeed);
+        if (rotateCamera)
+        {
+            transform.RotateAround(pivotObject.transform.position, new Vector3(0*yPan, xPan, yPan), rotationSpeed);
+
+        }
     }
 
     public void updateRightMouseHeldDown(bool currentlyHeld)

@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "InitiateMouse",
+                    "name": "RightClick",
                     "type": "Button",
                     "id": "b0467535-7e50-4ccc-a7ed-7c0197cac9ed",
                     "expectedControlType": "Button",
@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "2fc3beb4-ac7c-4248-8c32-12dc2d8a6c2b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -162,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "InitiateMouse",
+                    "action": "RightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -174,6 +183,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0407eacd-a81b-4770-b146-5a1a81b5b15f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

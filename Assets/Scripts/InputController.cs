@@ -19,7 +19,7 @@ public class InputController : MonoBehaviour
     private UserControls controls;
 
     [SerializeField]
-    private CameraPanEvent cameraEvent;
+    private CameraPanEvent cameraPanEvent;
 
     [SerializeField]
     private MouseMovementEvent mouseMovementEvent;
@@ -28,7 +28,13 @@ public class InputController : MonoBehaviour
     private RightMouseButtonEvent rightMouseButtonEvent;
 
     [SerializeField]
-    private bool debug = false;
+    private bool debugPan = false;
+
+    [SerializeField]
+    private bool debugMousePosition = false;
+
+    [SerializeField]
+    private bool debugRightClick = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +44,12 @@ public class InputController : MonoBehaviour
 
         //subscribe inputs being performed or cancelled to methods below which will then process and notify other members
         //shows how much mouse has moved from origin, for determing rotation direction
-        controls.Camera.CameraMovement.performed += OnCameraMovePerformed;
-        controls.Camera.CameraMovement.canceled += OnCameraMovePerformed;
+        controls.Camera.CameraMovement.performed += OnCameraPanPerformed;
+        controls.Camera.CameraMovement.canceled += OnCameraPanPerformed;
 
         //shows if right mouse has been pressed down
-        controls.Camera.InitiateMouse.performed += RotateWithMousePerformed;
-        controls.Camera.InitiateMouse.canceled += RotateWithMousePerformed;
+        controls.Camera.RightClick.performed += RotateWithMousePerformed;
+        controls.Camera.RightClick.canceled += RotateWithMousePerformed;
 
         //shows where the mouse is on screen, used for raycasting
         controls.Camera.MousePosition.performed += OnMouseMovePerformed;
@@ -56,13 +62,13 @@ public class InputController : MonoBehaviour
 
     }
 
-    private void OnCameraMovePerformed(InputAction.CallbackContext context)
+    private void OnCameraPanPerformed(InputAction.CallbackContext context)
     {
         //read vector 2 input and then send the data to subscribed members
         Vector2 panInput = context.ReadValue<Vector2>();
-        cameraEvent.Invoke(panInput.x, panInput.y);
+        cameraPanEvent.Invoke(panInput.x, panInput.y);
         
-        if(debug)
+        if(debugPan)
         {
             Debug.Log($"Pan Input: {panInput}");
         }
@@ -73,7 +79,7 @@ public class InputController : MonoBehaviour
         Vector2 mouseMovement = context.ReadValue<Vector2>();
         mouseMovementEvent.Invoke(mouseMovement.x, mouseMovement.y);
 
-        if (debug)
+        if (debugMousePosition)
         {
             Debug.Log($"Move Input: {mouseMovement}");
         }
@@ -83,7 +89,7 @@ public class InputController : MonoBehaviour
     {
         rightMouseButtonEvent.Invoke(context.ReadValueAsButton());
 
-        if(debug)
+        if(debugRightClick)
         {
             Debug.Log($"Right mouse held : {context.ReadValueAsButton()}");
         }
