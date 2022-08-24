@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+
 [Serializable]
 public class CameraPanEvent : UnityEvent<float, float> { }
 
@@ -41,7 +42,7 @@ public class InputController : MonoBehaviour
     {
         controls = new UserControls();
         controls.Camera.Enable();
-
+        
         //subscribe inputs being performed or cancelled to methods below which will then process and notify other members
         //shows how much mouse has moved from origin, for determing rotation direction
         controls.Camera.CameraMovement.performed += OnCameraPanPerformed;
@@ -54,6 +55,9 @@ public class InputController : MonoBehaviour
         //shows where the mouse is on screen, used for raycasting
         controls.Camera.MousePosition.performed += OnMouseMovePerformed;
         controls.Camera.MousePosition.canceled += OnMouseMovePerformed;
+
+        //quit
+        var _ = new QuitHandler(controls.Camera.Quit);
     }
 
     // Update is called once per frame

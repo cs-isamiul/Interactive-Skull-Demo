@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
+
+[Serializable]
+public class RaycastHitObjectName : UnityEvent<string> { }
 
 public class Raycast : MonoBehaviour
 {
@@ -15,6 +20,10 @@ public class Raycast : MonoBehaviour
     private float rayLength = 100f;
     [SerializeField]
     private Text boneText;
+
+    //test
+    [SerializeField]
+    private RaycastHitObjectName raycasthitObjectName;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +51,12 @@ public class Raycast : MonoBehaviour
             string objectName = raycasthit.transform.gameObject.name;
             //Change ui element to show name
             boneText.text = objectName;
+
+            raycasthitObjectName.Invoke(objectName);
+        } else
+        {
+            //being lazy TODO: actually make an event?
+            raycasthitObjectName.Invoke("null");
         }
 
         //show ray being cast

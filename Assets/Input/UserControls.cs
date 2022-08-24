@@ -62,6 +62,15 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5762601-0980-4d10-a99a-c1e3a84707ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                     ""action"": ""LeftClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""789e47a5-ba92-4268-a024-a442200ac791"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +250,7 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
         m_Camera_RightClick = m_Camera.FindAction("RightClick", throwIfNotFound: true);
         m_Camera_MousePosition = m_Camera.FindAction("MousePosition", throwIfNotFound: true);
         m_Camera_LeftClick = m_Camera.FindAction("LeftClick", throwIfNotFound: true);
+        m_Camera_Quit = m_Camera.FindAction("Quit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Camera_RightClick;
     private readonly InputAction m_Camera_MousePosition;
     private readonly InputAction m_Camera_LeftClick;
+    private readonly InputAction m_Camera_Quit;
     public struct CameraActions
     {
         private @UserControls m_Wrapper;
@@ -301,6 +323,7 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_Camera_RightClick;
         public InputAction @MousePosition => m_Wrapper.m_Camera_MousePosition;
         public InputAction @LeftClick => m_Wrapper.m_Camera_LeftClick;
+        public InputAction @Quit => m_Wrapper.m_Camera_Quit;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +345,9 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                 @LeftClick.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
                 @LeftClick.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
                 @LeftClick.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnLeftClick;
+                @Quit.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnQuit;
             }
             m_Wrapper.m_CameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -338,6 +364,9 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
                 @LeftClick.started += instance.OnLeftClick;
                 @LeftClick.performed += instance.OnLeftClick;
                 @LeftClick.canceled += instance.OnLeftClick;
+                @Quit.started += instance.OnQuit;
+                @Quit.performed += instance.OnQuit;
+                @Quit.canceled += instance.OnQuit;
             }
         }
     }
@@ -348,5 +377,6 @@ public partial class @UserControls : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
 }
