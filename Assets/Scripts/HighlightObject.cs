@@ -17,12 +17,25 @@ public class HighlightObject : MonoBehaviour
     private GameObject selectedObject;
     private GameObject highlightedLast;
     private bool objectSelected;
-    
 
-    //TODO maybe make these private? Will check later.
-    public int redCol;
-    public int greenCol;
-    public int blueCol;
+    [SerializeField]
+    [Range(0, 255)]
+    private int redCol;
+
+    [SerializeField]
+    [Range(0, 255)]
+    private int greenCol;
+
+    [SerializeField]
+    [Range(0, 255)]
+    private int blueCol;
+
+    [SerializeField]
+    [Range(0, 255)]
+    private int transparencyValue = 255;
+
+    [SerializeField]
+    private List<string> bannedHighlights;
 
     private void Start()
     {
@@ -42,14 +55,14 @@ public class HighlightObject : MonoBehaviour
             objectSelected = false;
         }
         //if we hit a valid object, highlight it
-        else if(objectName != "null")
+        else if(!bannedHighlights.Contains(objectName))
         {
             objectSelected = true;
             selectedObject = GameObject.Find(objectName);
             highlightedLast = selectedObject;
 
             enableRenderer(highlightedLast);
-            highlightedLast.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+            highlightedLast.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, (byte)transparencyValue);
 
             highlightedInformation.text = highlightedLast.GetComponent<TextContainer>().textField;
         }
