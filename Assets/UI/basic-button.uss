@@ -1,0 +1,28 @@
+.basic-button {
+    height: 31px;
+    width: 183px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.basic-button:hover {
+    height: 31px;
+    width: 183px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(106, 31, 31, 255);
+}
+
+.basic-button:active {
+    height: 31px;
+    width: 183px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(45, 106, 31);
+}
