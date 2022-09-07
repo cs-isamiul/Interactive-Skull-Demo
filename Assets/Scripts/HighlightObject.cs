@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.Events;
+using UnityEngine.UIElements;
 using UnityEngine.UI;
 
 
@@ -12,12 +12,14 @@ public class HighlightObject : MonoBehaviour
     private bool debug = false;
 
     [SerializeField]
-    private Text highlightedInformation;
+    private UIDocument uiDocument;
 
     private GameObject selectedObject;
     private GameObject highlightedLast;
     private bool objectSelected;
-
+    private Label itemName;
+    private Label itemDescription;
+    
     [SerializeField]
     [Range(0, 255)]
     private int redCol;
@@ -43,6 +45,12 @@ public class HighlightObject : MonoBehaviour
         selectedObject = new GameObject();
         highlightedLast = selectedObject;
         objectSelected = false;
+
+        //import UI text fields
+        var root = uiDocument.rootVisualElement;
+
+        itemName = root.Q<Label>("ItemName");
+        itemDescription = root.Q<Label>("ItemDescription");
     }
 
     //Once the raycast "hits" anything, it will send out an event with what it hit.
@@ -64,10 +72,13 @@ public class HighlightObject : MonoBehaviour
             enableRenderer(highlightedLast);
             highlightedLast.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, (byte)transparencyValue);
 
-            highlightedInformation.text = highlightedLast.GetComponent<TextContainer>().textField;
+            //change ui name and description
+            itemName.text = objectName;
+            itemDescription.text = highlightedLast.GetComponent<TextContainer>().textField;
+            //highlightedInformation.text = highlightedLast.GetComponent<TextContainer>().textField;
         }
 
-        if(debug)
+        if (debug)
         {
             Debug.Log($">>Last highlighted object was {highlightedLast.name}. Event was called for {objectName}.");
             Debug.Log($"Text says : {highlightedLast.GetComponent<TextContainer>().textField}");
@@ -79,7 +90,11 @@ public class HighlightObject : MonoBehaviour
         if(objectSelected)
         {
             disableRenderer(highlightedLast);
-            highlightedInformation.text = " ";
+
+            //change item name and description
+            itemName.text = " ";
+            itemDescription.text = " ";
+            //highlightedInformation.text = " ";
             //highlightedLast.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 0);
         }
     }

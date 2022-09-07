@@ -18,8 +18,6 @@ public class Raycast : MonoBehaviour
     private bool debug = true;
     [SerializeField]
     private float rayLength = 100f;
-    [SerializeField]
-    private Text boneText;
 
     //test
     [SerializeField]
@@ -50,7 +48,7 @@ public class Raycast : MonoBehaviour
             //Get the name of the object that was hit
             string objectName = raycasthit.transform.gameObject.name;
             //Change ui element to show name
-            boneText.text = objectName;
+            //boneText.text = objectName;
 
             raycasthitObjectName.Invoke(objectName);
         } else

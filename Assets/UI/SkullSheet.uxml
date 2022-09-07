@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/basic-label.uss?fileID=7433441132597879392&amp;guid=ac36c2abfff4e5c45a10f296239b6ca9&amp;type=3#basic-label" />
+    <ui:VisualElement name="Background" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 621px; width: 1257px; flex-grow: 1;">
+        <ui:Label text="Skull" display-tooltip-when-elided="true" name="ItemName" class="basic-label" />
+        <ui:Label text="Hover over the skull parts for more information" display-tooltip-when-elided="true" name="ItemDescription" class="basic-label" style="position: absolute; top: 31px; left: 1019px; height: 372px;" />
+    </ui:VisualElement>
+</ui:UXML>

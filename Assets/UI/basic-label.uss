@@ -1,0 +1,12 @@
+.basic-label {
+    width: 184px;
+    height: 89px;
+    position: absolute;
+    top: 50px;
+    left: 43px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 255);
+    font-size: 26px;
+    flex-direction: column;
+    white-space: normal;
+}
