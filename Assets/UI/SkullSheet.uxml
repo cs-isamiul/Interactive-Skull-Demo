@@ -1,7 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/basic-label.uss?fileID=7433441132597879392&amp;guid=ac36c2abfff4e5c45a10f296239b6ca9&amp;type=3#basic-label" />
-    <ui:VisualElement name="Background" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 621px; width: 1257px; flex-grow: 1;">
-        <ui:Label text="Skull" display-tooltip-when-elided="true" name="ItemName" class="basic-label" />
-        <ui:Label text="Hover over the skull parts for more information" display-tooltip-when-elided="true" name="ItemDescription" class="basic-label" style="position: absolute; top: 31px; left: 1019px; height: 372px;" />
+    <ui:VisualElement name="Background" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%; flex-grow: 1; align-items: stretch;">
+        <ui:Label display-tooltip-when-elided="true" name="ItemName" text="Early demo" class="basic-label" style="position: relative; height: 66px;" />
+        <ui:Label text="Point the mouse cursor at a part.\nHold right click and move the mouse to rotate the skull, or click the arrows.\nChange highlight settings to the right." display-tooltip-when-elided="true" name="ItemDescription" class="basic-label" style="position: relative; top: auto; left: auto; height: 372px; width: 222px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Background2" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 120%; width: 25%; flex-grow: 1; align-items: flex-start; position: relative; left: auto; top: auto; bottom: 45%; margin-left: 0; margin-right: 0; right: -73.5%;">
+        <ui:Toggle label="Audio" name="Audio" style="font-size: 16px; color: rgb(255, 255, 255);" />
+        <ui:SliderInt picking-mode="Ignore" label="Transparency" value="120" high-value="255" name="Transparency" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
+        <ui:SliderInt picking-mode="Ignore" label="Red" value="255" high-value="255" name="Red" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
+        <ui:SliderInt picking-mode="Ignore" label="Green" value="255" high-value="255" name="Green" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
+        <ui:SliderInt picking-mode="Ignore" label="Blue" value="60" high-value="255" name="Blue" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
     </ui:VisualElement>
 </ui:UXML>

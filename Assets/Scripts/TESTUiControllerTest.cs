@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class UiControllerTest : MonoBehaviour
+public class TESTUiControllerTest : MonoBehaviour
 {
     public Button testButton;
     public Button normalButton;

@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
+[Serializable]
+public class ItemNameChange : UnityEvent<string> { }
+[Serializable]
+public class ItemDescriptionChange : UnityEvent<string> { }
 
 public class HighlightObject : MonoBehaviour
 {
@@ -12,29 +17,26 @@ public class HighlightObject : MonoBehaviour
     private bool debug = false;
 
     [SerializeField]
-    private UIDocument uiDocument;
+    private ItemNameChange itemNameChangeEvent;
+
+    [SerializeField]
+    private ItemDescriptionChange itemDescriptionChangeEvent;
 
     private GameObject selectedObject;
     private GameObject highlightedLast;
     private bool objectSelected;
-    private Label itemName;
-    private Label itemDescription;
     
-    [SerializeField]
-    [Range(0, 255)]
-    private int redCol;
+    //[Range(0, 255)]
+    //private int redCol;
 
-    [SerializeField]
-    [Range(0, 255)]
-    private int greenCol;
+    //[Range(0, 255)]
+    //private int greenCol;
 
-    [SerializeField]
-    [Range(0, 255)]
-    private int blueCol;
+    //[Range(0, 255)]
+    //private int blueCol;
 
-    [SerializeField]
-    [Range(0, 255)]
-    private int transparencyValue = 255;
+    //[Range(0, 255)]
+    //private int transparencyValue = 255;
 
     [SerializeField]
     private List<string> bannedHighlights;
@@ -45,17 +47,13 @@ public class HighlightObject : MonoBehaviour
         selectedObject = new GameObject();
         highlightedLast = selectedObject;
         objectSelected = false;
-
-        //import UI text fields
-        var root = uiDocument.rootVisualElement;
-
-        itemName = root.Q<Label>("ItemName");
-        itemDescription = root.Q<Label>("ItemDescription");
     }
 
     //Once the raycast "hits" anything, it will send out an event with what it hit.
     public void OnObjectHit(string objectName)
     {
+        selectedObject = GameObject.Find(objectName);
+
         //If the object hit has a different name from the object we are highlighting, then stop highlighting it.
         if (objectSelected && objectName != highlightedLast.name)
         {
@@ -63,18 +61,20 @@ public class HighlightObject : MonoBehaviour
             objectSelected = false;
         }
         //if we hit a valid object, highlight it
-        else if(!bannedHighlights.Contains(objectName))
+        else if(selectedObject && !bannedHighlights.Contains(objectName))
         {
             objectSelected = true;
-            selectedObject = GameObject.Find(objectName);
             highlightedLast = selectedObject;
 
+            //get transparency value
+            //transparencyValue = GetComponent<UIController>().GetTransparency();
+
             enableRenderer(highlightedLast);
-            highlightedLast.GetComponent<Renderer>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, (byte)transparencyValue);
+            highlightedLast.GetComponent<Renderer>().material.color = GetComponent<UIController>().GetColorValue();
 
             //change ui name and description
-            itemName.text = objectName;
-            itemDescription.text = highlightedLast.GetComponent<TextContainer>().textField;
+            itemNameChangeEvent.Invoke(objectName);
+            itemDescriptionChangeEvent.Invoke(highlightedLast.GetComponent<TextContainer>().textField);
             //highlightedInformation.text = highlightedLast.GetComponent<TextContainer>().textField;
         }
 
@@ -92,8 +92,8 @@ public class HighlightObject : MonoBehaviour
             disableRenderer(highlightedLast);
 
             //change item name and description
-            itemName.text = " ";
-            itemDescription.text = " ";
+            itemNameChangeEvent.Invoke("Early demo");
+            itemDescriptionChangeEvent.Invoke("Point the mouse cursor at a part.\nHold right click and move the mouse to rotate the skull, or click the arrows.\nChange highlight settings to the right.");
             //highlightedInformation.text = " ";
             //highlightedLast.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 0);
         }

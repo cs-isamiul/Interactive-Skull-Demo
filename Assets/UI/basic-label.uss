@@ -1,12 +1,31 @@
 .basic-label {
     width: 184px;
     height: 89px;
-    position: absolute;
-    top: 50px;
-    left: 43px;
+    position: relative;
+    top: auto;
+    left: auto;
     background-color: rgba(0, 0, 0, 0);
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     font-size: 26px;
     flex-direction: column;
     white-space: normal;
+    align-items: stretch;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.basic-slider {
+    color: rgba(255, 255, 255, 255);
+    width: 80%;
+}
+
+.basic-slider:active {
+    color: rgb(255, 255, 255);
+    width: 80%;
+}
+
+.basic-slider:hover {
+    color: rgb(255, 255, 255);
+    width: 80%;
 }
