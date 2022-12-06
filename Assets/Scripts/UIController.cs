@@ -7,16 +7,10 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private UIDocument uiDocument;
 
-    [SerializeField]
-    private int cameraSteps = 5;
-
     private Label itemName, itemDescription;
-    private SliderInt transparency;
-    private SliderInt red;
-    private SliderInt green;
-    private SliderInt blue;
+    private SliderInt red, green, blue, transparency, rotateStep;
     private Toggle audio;
-    private Button up, down, left, right;
+    private Button up, down, left, right, reset;
     GameObject RotationInvoker;
 
     // Start is called before the first frame update
@@ -43,11 +37,14 @@ public class UIController : MonoBehaviour
         down = root.Q<Button>("Down");
         left = root.Q<Button>("Left");
         right = root.Q<Button>("Right");
+        reset = root.Q<Button>("Reset");
+        rotateStep = root.Q<SliderInt>("RotateStep");
 
         up.clicked += UpButtonPressed;
         down.clicked += DownButtonPressed;
         left.clicked += LeftButtonPressed;
         right.clicked += RightButtonPressed;
+        reset.clicked += ResetButtonPressed;
     }
 
     public void ChangeItemName(string name)
@@ -64,7 +61,7 @@ public class UIController : MonoBehaviour
     private void CameraRotationMethod(float x, float y)
     {
         RotationInvoker.GetComponent<RotateAroundPoint>().updateRightMouseHeldDown(true);
-        for (int i = 0; i < cameraSteps; i++)
+        for (int i = 0; i < rotateStep.value; i++)
         {
             RotationInvoker.GetComponent<RotateAroundPoint>().OnRotateInput(x, y);
         }

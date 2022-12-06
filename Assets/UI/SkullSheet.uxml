@@ -5,19 +5,23 @@
         <ui:Label display-tooltip-when-elided="true" name="ItemName" text="Early demo" class="basic-label" style="position: relative; height: 66px;" />
         <ui:Label text="Point the mouse cursor at a part.\nHold right click and move the mouse to rotate the skull, or click the arrows.\nChange highlight settings to the right." display-tooltip-when-elided="true" name="ItemDescription" class="basic-label" style="position: relative; top: auto; left: auto; height: 372px; width: 222px;" />
     </ui:VisualElement>
-    <ui:VisualElement name="Background2" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 72%; width: 25%; flex-grow: 1; align-items: flex-start; position: relative; left: auto; top: auto; bottom: 45%; margin-left: 0; margin-right: 0; right: -73.5%;">
+    <ui:VisualElement name="Background2" style="overflow: visible; flex-direction: column; background-color: rgba(0, 0, 0, 0); height: 50%; width: 25%; flex-grow: 1; align-items: flex-start; position: relative; left: auto; top: auto; bottom: 45%; margin-left: 0; margin-right: 0; right: -73.5%;">
         <ui:Toggle label="Audio" name="Audio" style="font-size: 16px; color: rgb(255, 255, 255);" />
         <ui:SliderInt picking-mode="Ignore" label="Transparency" value="120" high-value="255" name="Transparency" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
         <ui:SliderInt picking-mode="Ignore" label="Red" value="255" high-value="255" name="Red" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
         <ui:SliderInt picking-mode="Ignore" label="Green" value="255" high-value="255" name="Green" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
         <ui:SliderInt picking-mode="Ignore" label="Blue" value="60" high-value="255" name="Blue" class="basic-slider" style="margin-right: 4px; margin-left: 4px; margin-top: 2px; margin-bottom: 2px; width: 100%;" />
     </ui:VisualElement>
-    <ui:VisualElement name="Background3" class="basic-buton" style="right: -73.5%; bottom: 5%; flex-grow: 1; width: 25%; height: 50%; min-width: auto; min-height: auto; align-items: stretch;">
-        <ui:Button text="↑" display-tooltip-when-elided="true" name="Up" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-right: 12px; width: 90%;" />
-        <ui:GroupBox style="flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 100%;">
-            <ui:Button text="←" display-tooltip-when-elided="true" name="Left" style="width: 45%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
-            <ui:Button text="→" display-tooltip-when-elided="true" name="Right" style="width: 45%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+    <ui:VisualElement name="Background3" style="right: -73.5%; bottom: 5%; flex-grow: 1; width: 25%; height: 65%; min-width: auto; min-height: auto; align-items: stretch;">
+        <ui:SliderInt picking-mode="Ignore" label="Rotation Step" value="5" high-value="30" name="RotateStep" low-value="1" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; color: rgb(255, 255, 255); -unity-font-style: normal;" />
+        <ui:GroupBox>
+            <ui:Button text="↑" display-tooltip-when-elided="true" name="Up" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-right: 12px; width: 90%;" />
+            <ui:GroupBox style="flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 100%;">
+                <ui:Button text="←" display-tooltip-when-elided="true" name="Left" style="width: 45%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:Button text="→" display-tooltip-when-elided="true" name="Right" style="width: 45%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            </ui:GroupBox>
+            <ui:Button text="↓" display-tooltip-when-elided="true" name="Down" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 90%;" />
+            <ui:Button text="Reset" display-tooltip-when-elided="true" name="Reset" style="width: 90%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
         </ui:GroupBox>
-        <ui:Button text="↓" display-tooltip-when-elided="true" name="Down" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; width: 90%;" />
     </ui:VisualElement>
 </ui:UXML>
