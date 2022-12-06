@@ -25,18 +25,6 @@ public class HighlightObject : MonoBehaviour
     private GameObject selectedObject;
     private GameObject highlightedLast;
     private bool objectSelected;
-    
-    //[Range(0, 255)]
-    //private int redCol;
-
-    //[Range(0, 255)]
-    //private int greenCol;
-
-    //[Range(0, 255)]
-    //private int blueCol;
-
-    //[Range(0, 255)]
-    //private int transparencyValue = 255;
 
     [SerializeField]
     private List<string> bannedHighlights;
@@ -49,12 +37,13 @@ public class HighlightObject : MonoBehaviour
         objectSelected = false;
     }
 
-    //Once the raycast "hits" anything, it will send out an event with what it hit.
+    //Once the raycast "hits" anything, it will send out an event with what it hit. This method will then pick up that event.
     public void OnObjectHit(string objectName)
     {
         selectedObject = GameObject.Find(objectName);
 
         //If the object hit has a different name from the object we are highlighting, then stop highlighting it.
+        //This is here because multiple raycasts are sent per second
         if (objectSelected && objectName != highlightedLast.name)
         {
             OnObjectExit();

@@ -57,7 +57,7 @@ public class InputController : MonoBehaviour
         controls.Camera.MousePosition.canceled += OnMouseMovePerformed;
 
         //quit
-        var _ = new QuitHandler(controls.Camera.Quit);
+        //var _ = new QuitHandler(controls.Camera.Quit);
     }
 
     // Update is called once per frame

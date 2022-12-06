@@ -51,7 +51,7 @@ public class Raycast : MonoBehaviour
             raycasthitObjectName.Invoke(objectName);
         } else
         {
-            //being lazy TODO: actually make an event?
+            //being lazy TODO: actually make a different event?
             raycasthitObjectName.Invoke("null");
         }
 
