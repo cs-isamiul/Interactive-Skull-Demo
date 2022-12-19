@@ -395,10 +395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20963ea8822e80f46b77bb417ea0373c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textField: Sphenoid information to be added. That being said this is a chance to
-    just add a bunch of random text to show that the information can keep going down.
-    I don't really have much text to write here but hopefully this is a lot. Please
-    note, this is not complete.
+  textField: The orbits are bony structures of the skull that house the globe, extraocular
+    muscles, nerves, blood vessels, lacrimal apparatus, and adipose tissue.
 --- !u!64 &738518117
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -423,7 +421,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c15f90951049f5c40b416c11a66d8f91, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3497e92de053f1a41a63b21c47ecf5f6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -567,6 +565,10 @@ PrefabInstance:
     - target: {fileID: -4386575963398080107, guid: afeb9603f0113e34bb1ee4f8c242d555, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3972060578089690399, guid: afeb9603f0113e34bb1ee4f8c242d555, type: 3}
+      propertyPath: m_Name
+      value: Orbits
       objectReference: {fileID: 0}
     - target: {fileID: -3972060578089690399, guid: afeb9603f0113e34bb1ee4f8c242d555, type: 3}
       propertyPath: m_IsActive
@@ -816,7 +818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDocument: {fileID: 1396927537}
-  cameraSteps: 5
 --- !u!114 &1200833425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,7 +852,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20963ea8822e80f46b77bb417ea0373c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textField: Parietal information to be added
+  textField: The parietal bones are bilateral skull bones that form the superior
+    and lateral walls of the cranium.
 --- !u!64 &1247566132
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -876,7 +878,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a4bf11ad2baab9b4e8cd1d462a9a8db5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 55137e5aded6da5499114c5930f9f542, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1196,7 +1198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20963ea8822e80f46b77bb417ea0373c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textField: Frontal information to be added
+  textField: The frontal bone is a shell-shaped, unpaired, flat bone of the skull
+    located in the forehead region.
 --- !u!64 &1678105888
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1221,7 +1224,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b6a0754a7f2685f4b8cdc70dca4301e8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f4ab3a62088aa4b40acefa797091a244, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1343,7 +1346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20963ea8822e80f46b77bb417ea0373c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textField: Nasal information to be added
+  textField: The anatomy of the monkey nasal cavity is similar to that of humans
+    and rats.
 --- !u!64 &1873347457
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1368,7 +1372,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c0a64747b6e6d04781bafd37bcef657, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 951f942a1cf7ddc40ada17ddecca7203, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
